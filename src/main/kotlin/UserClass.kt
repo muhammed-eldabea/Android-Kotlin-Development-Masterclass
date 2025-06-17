@@ -2,6 +2,105 @@ import Calculator.Companion.sum
 import java.awt.Color
 
 
+
+
+open class Vehicle (val name :String , val color :String ) {
+
+    open fun printvec() {
+    }
+
+    open  fun start() {
+        println("Starting the : $name")
+    }
+    open fun stop() {
+        println("Stopping the : $name")
+    }
+    open fun accelerate() {
+        println("Accelerating the : $name")
+    }
+}
+
+class Carchild (name :String , color:String , val engines : Int , val doors :Int ) : Vehicle(name, color) {
+
+    override fun printvec() {
+        println("Car name: $name, Color: $color, Engines: $engines, Doors: $doors")
+    }
+
+    override fun start() {
+        println("Starting the car: $name with $engines engines and $doors doors")
+        //call the parent class start method
+        super.start()
+    }
+
+    override fun stop() {
+        println("Stopping the car: $name with $engines engines and $doors doors")
+    }
+
+    override fun accelerate() {
+        println("Accelerating the car: $name with $engines engines and $doors doors")
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Account (val  accountName : String)
+{
+
+    // Using a private variable to store the balance
+    private var balance: Double = 0.0
+    // Using a mutable list to store transactions
+    // This allows us to keep track of deposits and withdrawals
+    // and print them later.
+    private var transactions: MutableList<Double> = mutableListOf()
+
+    fun deposit(amount: Double)  {
+        if (amount < 0) {
+//            throw IllegalArgumentException("Deposit amount must be positive")
+            println("Deposit amount must be positive")
+        }
+        transactions.add(amount)
+        balance += amount
+        println("Deposited: $amount, New Balance: $balance")
+    }
+    fun withdraw(amount: Double)  {
+        if (amount < 0) {
+//            throw IllegalArgumentException("Withdrawal amount must be positive")
+            println("Withdrawal amount must be positive")
+        }
+        if (amount > balance) {
+//            throw IllegalArgumentException("Insufficient funds")
+            println("Insufficient funds")
+
+        }
+        balance -= amount
+        transactions.add(-amount)
+    }
+    fun printTransactions() {
+        println("Transactions for $accountName:")
+        transactions.forEach { println(it) }
+    }
+}
+
+
+
+
+
+
+
+
+
+
 class Listview (val items :Array<String>)
 {
 
